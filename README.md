@@ -1,7 +1,7 @@
 # Decentr Auto-Discard POC extension
 
 #### How to install on your computer
-- Download the zip file
+- Download the zip file ([Download here](https://github.com/bogdanteodoru/decentr-auto-discard/raw/master/archives/extension-build.zip))
 - Unzip to a location where you won't delete the files ;)
 - Go to `decentr://extensions/` in your browser
 - Activate `developer mode` if its not already active (top right hand side)
