@@ -28,15 +28,4 @@ export class ShortcutsComponent implements OnInit {
     event.preventDefault();
     chrome.tabs.update({url: 'decentr://extensions/shortcuts'});
   }
-
-  public cancel(): void {
-    // Only close the window if we were opened in a new tab.
-    // Else, go back to the page we were on.
-    // This is to fix closing tabs if they were opened from the context menu.
-    if (document.referrer === '') {
-      window.close();
-    } else {
-      history.back();
-    }
-  }
 }

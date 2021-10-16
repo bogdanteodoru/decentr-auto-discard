@@ -3,7 +3,7 @@
   "name": "Decentr Auto-Discard",
   "short_name": "decentr-auto-discard",
   "description": "A Chrome extension to free up system resources used by active tabs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "permissions": [
     "tabs",
     "storage",

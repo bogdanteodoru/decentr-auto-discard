@@ -104,7 +104,14 @@ import TabActiveInfo = chrome.tabs.TabActiveInfo;
         if (lastTabId) {
             chrome.tabs.get(
                 parseInt(lastTabId),
-                (lastTab: Tab) => resetTabTimer(lastTab)
+                (lastTab: Tab) => {
+                    if (chrome.runtime.lastError) {
+                        console.log(chrome.runtime.lastError.message);
+                        return false;
+                    }
+
+                    return resetTabTimer(lastTab)
+                }
             );
         }
 
