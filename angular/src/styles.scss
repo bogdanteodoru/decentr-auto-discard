@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+
+html,
+body {
+  font-family: Inter,Arial,sans-serif;
+  color: #1c1d26;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: #B6B7BA;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1px solid #ededee;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.logo .product {
+  font-size: 18px;
+  color: #1C1D26;
+}
+
+.logo-texts {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  border: 1px solid #f6f6f7;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: #f6f6f7;
+  color: #b6b7ba;
+  margin-right: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button.button-save {
+  background: #4f80ff;
+  color: #FFF;
+}
+
+header,
+.options {
+  display: flex;
+  flex-direction: column;
+  max-width: 1004px;
+  margin: 20px auto 14px;
+  padding: 0 10px;
+}
+
+.menu {
+  margin-top: 20px;
+}
+.menu a {
+  font-size: 18px;
+  color: #929297;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 20px;
+}
+.menu a.active {
+  color: #1c1d26;
+  padding-bottom: 10px;
+  font-weight: 700;
+  border-bottom: 4px solid #4f80ff;
+}
+
+.content,
+.line-separator {
+  border-top: 1px solid #ededee;
+}
+
+.options > form,
+.options > div {
+  padding: 20px;
+  border: 2px solid #ededee;
+  border-radius: 12px;
+}

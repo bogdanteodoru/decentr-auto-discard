@@ -1,0 +1,55 @@
+{
+  "manifest_version": 2,
+  "name": "Decentr Auto-Discard",
+  "short_name": "decentr-auto-discard",
+  "description": "A Chrome extension to free up system resources used by active tabs",
+  "version": "0.0.1",
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus",
+    "alarms",
+    "*://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "assets/icon48.png",
+    "default_popup": "index.html?#/popup",
+    "default_title": "Decentr Auto-Discard"
+  },
+  "options_page": "index.html?#/options",
+  "background": {
+    "scripts": ["db.js", "das-db.js", "das-storage.js", "das-events.js"],
+    "persistent": false
+  },
+
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+
+  "incognito": "split",
+  "minimum_chrome_version": "54",
+
+  "commands": {
+    "1-discard-current-tab": {
+      "description": "Discard active tab",
+      "suggested_key": { "default": "Ctrl+Shift+S" }
+    },
+    "2-reload-current-tab": {
+      "description": "Reload current tab"
+    },
+    "3-discard-all-active-window": {
+      "description": "Discard all tabs in active window"
+    },
+    "4-reload-all-active-window": {
+      "description": "Reload all tabs in active window"
+    },
+    "5-discard-all-windows": {
+      "description": "Discard all tabs in all windows"
+    },
+    "6-reload-all-windows": {
+      "description": "Reload all tabs in all windows"
+    }
+  }
+}

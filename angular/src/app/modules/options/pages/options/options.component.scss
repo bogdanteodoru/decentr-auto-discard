@@ -1,0 +1,52 @@
+input,
+select,
+textarea {
+  border: 1px solid #ededee;
+  border-radius: 5px;
+  resize: none;
+  font-size: 14px;
+  outline: none;
+}
+
+.option {
+  margin-right: 10px;
+}
+
+.logo {
+  border-bottom: none;
+  margin: 0;
+  padding: 0;
+}
+
+.formRow,
+.line-separator,
+.shortcut,
+.whitelist-label {
+  margin-bottom: 10px;
+}
+
+.whitelist-label {
+  display: block;
+}
+
+.whitelist-domains {
+  display: flex;
+  flex-direction: row;
+}
+
+.whitelist-info {
+  margin-left: 20px;
+  font-size: 12px;
+  color: #929297
+}
+
+.settings-saved,
+.note {
+  font-size: 14px;
+  color: green;
+}
+
+.note {
+  color: red;
+  font-size: 12px;
+}

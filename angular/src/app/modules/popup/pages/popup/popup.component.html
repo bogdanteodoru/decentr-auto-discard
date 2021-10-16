@@ -1,0 +1,60 @@
+<div class="content">
+  <div class="logo">
+    <img src="./assets/logo-decentr-pink.svg" height="40" width="40"  alt="Logo Decentr">
+    <div class="logo-texts">
+      <span>Decentr</span>
+      <span class="product">Auto-Discard</span>
+    </div>
+  </div>
+
+  <div class="header" [ngClass]="headerSecondaryClass">
+    <div>
+      {{headerStatusText}}
+      <a
+        href="#"
+        *ngIf="headerStatusMessage"
+        (click)="doAction(headerStatusAction)">
+        {{headerStatusMessage}}
+      </a>
+    </div>
+  </div>
+
+  <div class="group currentOptions" *ngIf="canDiscard || canTempWhitelist || canWhitelist">
+    <div class="option" *ngIf="canDiscard" (click)="doAction(DasEventsNamesEnum.DISCARD_ONE)">
+      <span class="text">Discard this tab</span>
+    </div>
+    <div class="option" *ngIf="canTempWhitelist" (click)="doAction(DasEventsNamesEnum.TEMP_WHITELIST_TAB)">
+      <span class="text">Don't discard for now</span>
+      <div class="small-text">(This tab only)</div>
+    </div>
+    <div class="option" *ngIf="canWhitelist" (click)="doAction(DasEventsNamesEnum.WHITELIST_TAB)">
+      <span class="text">Never discard this site</span>
+    </div>
+  </div>
+
+  <div class="group allOptions">
+    <div class="option" (click)="doAction(DasEventsNamesEnum.DISCARD_ALL)">
+      <span class="text">Discard other tabs</span>
+    </div>
+    <div class="option" (click)="doAction(DasEventsNamesEnum.RELOAD_ALL)">
+      <span class="text">Reload all tabs</span>
+    </div>
+  </div>
+
+  <div class="group selectedOptions hidden" *ngIf="discardSelectedGroup">
+    <div class="option" (click)="doAction(DasEventsNamesEnum.DISCARD_SELECTED_TABS)">
+      <span class="text">Discard selected tabs</span>
+    </div>
+    <div class="option" (click)="doAction(DasEventsNamesEnum.RELOAD_SELECTED_TABS)">
+      <span class="text">Reload selected tabs</span>
+    </div>
+  </div>
+
+  <div class="group settingsOptions">
+    <div class="option" (click)="goToSettings()">
+      <span class="text settings-button">
+        <span [innerHTML]="getRealEmoji(9881)"></span> Settings
+      </span>
+    </div>
+  </div>
+</div>

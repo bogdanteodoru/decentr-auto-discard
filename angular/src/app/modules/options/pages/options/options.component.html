@@ -1,0 +1,115 @@
+<header>
+  <div class="logo">
+    <img src="./assets/logo-decentr-pink.svg" height="40" width="40"  alt="Logo Decentr">
+    <div class="logo-texts">
+      <span>Decentr</span>
+      <span class="product">Auto-Discard</span>
+    </div>
+  </div>
+  <div class="menu">
+    <a href="index.html?#/options" class="active">General Settings</a>
+    <a href="index.html?#/shortcuts">Keyboard shortcuts</a>
+    <a href="#" (click)="goToDiscardedTabs($event)">Discarded Tabs</a>
+  </div>
+</header>
+<div class="content">
+  <div class="options">
+    <form [formGroup]="optionsForm" (ngSubmit)="submit(optionsForm)">
+      <div class="formRow">
+        <label>Automatically discard tabs after:</label>
+        <select [formControlName]="DasStorageEnum.TIME_TO_DISCARD" class="option ml-10">
+          <option value="0">Never</option>
+          <option value="1">1 minute</option>
+          <option value="5">5 minutes</option>
+          <option value="10">10 minutes</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="120">2 hours</option>
+          <option value="240">4 hours</option>
+          <option value="360">6 hours</option>
+          <option value="720">12 hours</option>
+          <option value="1440">1 day</option>
+          <option value="2880">2 days</option>
+          <option value="4320">3 days</option>
+        </select>
+      </div>
+
+      <div *ngIf="optionsForm.get(DasStorageEnum.TIME_TO_DISCARD).value !== '0'">
+        <div class="formRow autoDiscardOption">
+          <input [formControlName]="DasStorageEnum.DONT_DISCARD_PINNED" type="checkbox" id="dontDiscardPinned" class="option" />
+          <label for="dontDiscardPinned">Do not discard pinned tabs</label>
+        </div>
+
+        <div class="formRow autoDiscardOption">
+          <input [formControlName]="DasStorageEnum.DONT_DISCARD_AUDIO" type="checkbox" id="dontDiscardAudio" class="option" />
+          <label for="dontDiscardAudio">Do not discard tabs that are playing audio</label>
+        </div>
+
+        <div class="formRow autoDiscardOption">
+          <input [formControlName]="DasStorageEnum.ONLINE_CHECK" type="checkbox" id="onlineCheck" class="option" />
+          <label for="onlineCheck">Only auto-discard if connected to the internet</label>
+        </div>
+
+        <div class="formRow autoDiscardOption">
+          <input [formControlName]="DasStorageEnum.BATTERY_CHECK" type="checkbox" id="batteryCheck" class="option" />
+          <label for="batteryCheck">Only auto-discard if running on battery</label>
+        </div>
+
+        <div class="formRow autoDiscardOption">
+          <input [formControlName]="DasStorageEnum.DISCARD_AT_STARTUP" type="checkbox" id="discardAtStartup" class="option" />
+          <label for="discardAtStartup">Discard all tabs at startup</label>
+        </div>
+      </div>
+
+      <div class="line-separator" *ngIf="optionsForm.get(DasStorageEnum.TIME_TO_DISCARD).value !== '0'"></div>
+
+      <div class="formRow" *ngIf="optionsForm.get(DasStorageEnum.TIME_TO_DISCARD).value !== '0'">
+        <label for="whitelist" class="whitelist-label">Whitelist domains</label>
+        <div class="whitelist-domains">
+          <textarea
+            [formControlName]="DasStorageEnum.WHITELIST"
+            id="whitelist"
+            class="option"
+            rows="10"
+            cols="50"
+            placeholder="Add domain names...">
+          </textarea>
+          <div class="whitelist-info">
+            Add the URL of each page you want to whitelist on a new line. For example: <br /><br />
+            https://play.google.com/music/listen<br />
+            https://mail.google.com<br /><br />
+            You can specify part of the url instead to whitelist multiple sites in one go:<br />
+            google.com<br /><br />
+            You can also specify regular expressions by enclosing the text in forward slashes:<br />
+            /^https:.*google\.com/"
+          </div>
+        </div>
+      </div>
+
+      <div class="line-separator"></div>
+
+      <div class="formRow">
+        <input [formControlName]="DasStorageEnum.ADD_TO_CONTEXT_MENU" type="checkbox" id="addContextMenu" class="option" />
+        <label for="addContextMenu" class="cbLabel">Add Decentr Auto-Discard to right-click context menu</label>
+      </div>
+
+      <div class="formRow mb-20">
+        <input [formControlName]="DasStorageEnum.SYNC_OPTIONS" type="checkbox" id="syncOptions" class="option" />
+        <label for="syncOptions" class="cbLabel">Sync settings between different systems</label>
+        <div class="note" *ngIf="!optionsForm.get(DasStorageEnum.SYNC_OPTIONS).value">
+          Turning this on will overwrite settings on all synced systems.
+        </div>
+      </div>
+
+      <div class="settings-saved mb-20" *ngIf="settingsSaved">
+        Your settings have been saved!
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="button" (click)="cancel()">Cancel</button>
+        <button type="submit" class="button button-save">Save settings</button>
+      </div>
+    </form>
+  </div>
+</div>

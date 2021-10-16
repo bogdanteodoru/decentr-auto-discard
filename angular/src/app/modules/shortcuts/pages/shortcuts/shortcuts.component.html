@@ -1,0 +1,30 @@
+<header>
+  <div class="logo">
+    <img src="./assets/logo-decentr-pink.svg" height="40" width="40"  alt="Logo Decentr">
+    <div class="logo-texts">
+      <span>Decentr</span>
+      <span class="product">Auto-Discard</span>
+    </div>
+  </div>
+  <div class="menu">
+    <a href="index.html?#/options">General Settings</a>
+    <a href="index.html?#/shortcuts" class="active">Keyboard shortcuts</a>
+    <a href="#" (click)="goToDiscardedTabs($event)">Discarded Tabs</a>
+  </div>
+</header>
+<div class="content">
+  <div class="options">
+    <div>
+      <div class="mb-20">
+        <div class="shortcut" *ngFor="let shortcut of shortcuts">
+          {{shortcut.description}} {{shortcut.shortcut ? shortcut.shortcut : '[not yet set]'}}
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="button" class="button button-save" (click)="goToShortcuts($event)">
+          Remap keys
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
