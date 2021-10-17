@@ -356,21 +356,21 @@ import TabActiveInfo = chrome.tabs.TabActiveInfo;
                     (options[DasStorageEnum.DONT_DISCARD_PINNED] && tab.pinned) ||
                     (options[DasStorageEnum.DONT_DISCARD_AUDIO] && tab.audible)
                 );
-                const text = () => {
+                const badge = () => {
                     if (
                         checkWhiteList(tab.url, options[DasStorageEnum.WHITELIST]) ||
                         checkTemporaryWhiteList(tab.id)
                     ) {
-                        return '🧡';
+                        return 'FAV';
                     } else if (tab.active && !specialTabs) {
-                        return '😴';
+                        return 'ON';
                     } else if (specialTabs) {
-                        return '⛔';
+                        return 'OFF';
                     }
                 }
 
-                chrome.browserAction.setBadgeText({ 'text': text() });
-                chrome.browserAction.setBadgeBackgroundColor({ color: '#F1F1F1' });
+                chrome.browserAction.setBadgeText({ 'text': badge() });
+                chrome.browserAction.setBadgeBackgroundColor({ color: 'rgba(49, 112, 143, 1)' });
             });
         });
     }
