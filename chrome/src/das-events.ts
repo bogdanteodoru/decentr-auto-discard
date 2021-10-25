@@ -67,6 +67,9 @@ import TabActiveInfo = chrome.tabs.TabActiveInfo;
         });
     }
 
+    // On new tab creation
+    chrome.tabs.onCreated.addListener((tab: Tab) => updateExtensionBadge(tab.id));
+
     // On TAB state changes
     chrome.tabs.onUpdated.addListener((tabId: number, changeInfo: TabChangeInfo, tab) => {
         // If tab in loading state or discarded
@@ -133,7 +136,8 @@ import TabActiveInfo = chrome.tabs.TabActiveInfo;
             url.indexOf('decentr-extension:') === 0 ||
             url.indexOf('chrome-devtools:') === 0 ||
             url.indexOf('file:') === 0 ||
-            url.indexOf('chrome.google.com/webstore') >= 0;
+            url.indexOf('chrome.google.com/webstore') >= 0 ||
+            url === '';
     }
 
     function discardTab(tab) {
